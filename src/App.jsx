@@ -184,7 +184,7 @@ function App() {
       try {
         const resp = await fetch(url, options);
         if (!resp.ok){
-          throw new Error(resp.message)
+          throw new Error(resp.status)
         };
         const response = await resp.json();
         const fetchedTodos = response.records.map((record) =>{

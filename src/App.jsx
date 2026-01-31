@@ -192,9 +192,9 @@ function App() {
             id: record.id, 
             ...record.fields,
           };
-          if (todo.isCompleted){
-            todo.isCompleted = false;
-          } return todo
+          if (todo.isCompleted === undefined) {
+               todo.isCompleted = false;
+                } return todo
         })
         setTodoList(fetchedTodos)
         }

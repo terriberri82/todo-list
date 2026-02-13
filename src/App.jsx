@@ -18,7 +18,7 @@ function App() {
   const [sortDirection, setSortDirection] = useState("desc");
   const [queryString, setQueryString] = useState("");
 
-const encodeURL = useCallback(()=>{
+const encodeUrl = useCallback(()=>{
   let sortQuery = `sort[0][field]=${sortField}&sort[0][direction]=${sortDirection}`;
   let searchQuery = "";
   if(queryString){
@@ -51,7 +51,7 @@ const encodeURL = useCallback(()=>{
 
     try{
       setIsSaving(true);
-      const resp = await fetch(encodeURL(), options);
+      const resp = await fetch(encodeUrl(), options);
         if (!resp.ok){
           throw new Error(resp.status)
          };
@@ -109,7 +109,7 @@ const encodeURL = useCallback(()=>{
     try{
       setIsSaving(true);
       
-       const resp = await fetch(encodeURL(), options);
+       const resp = await fetch(encodeUrl(), options);
        if (!resp.ok){
           throw new Error(resp.status)
          };
@@ -167,7 +167,7 @@ const encodeURL = useCallback(()=>{
 
     try{
       setIsSaving(true);
-       const resp = await fetch(encodeURL(), options);
+       const resp = await fetch(encodeUrl(), options);
        if (!resp.ok){
           throw new Error(resp.status)
          };
@@ -196,7 +196,7 @@ const encodeURL = useCallback(()=>{
          headers: {"Authorization": token}
       }
       try {
-        const resp = await fetch(encodeURL(), options);
+        const resp = await fetch(encodeUrl(), options);
         if (!resp.ok){
           throw new Error(resp.status)
         };
@@ -219,7 +219,7 @@ const encodeURL = useCallback(()=>{
      } 
     };
     fetchTodos();
-   }, [encodeURL, token])
+   }, [encodeUrl, token])
     
   
     //return  JSX//

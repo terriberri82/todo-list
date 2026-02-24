@@ -1,0 +1,33 @@
+:root {
+  --font-body: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --font-heading: ui-serif, Georgia, "Times New Roman", Times, serif;
+  background-color: rgb(7, 116, 49);
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  font-family: var(--font-body);
+  
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  letter-spacing: 0.2px;
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+p,
+li {
+  line-height: 1.5;
+}

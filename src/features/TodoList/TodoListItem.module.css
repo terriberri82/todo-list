@@ -1,0 +1,14 @@
+.checkbox {
+list-style: none;
+padding-bottom: .05em;
+   
+}
+.handleEditButton{
+     background-color: rgb(2, 68, 2);
+    color: white;
+    border: rgb(146, 161, 7) solid .25em;
+}
+.handleEditButton:hover{
+     background-color: rgb(146, 161, 7);
+     border: rgb(2, 68, 2) solid .25em;
+}

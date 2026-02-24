@@ -1,4 +1,12 @@
 import {useState, useEffect} from 'react';
+import styles from "./TodosViewForm.module.css";
+import styled from "styled-components";
+const SearchInputStyle = styled.input`
+background-color:rgba(199, 238, 214, 1);
+`
+const SelectStyle = styled.select`
+background-color:rgba(199, 238, 214, 1);
+`
 
 function TodosViewForm({sortDirection, setSortDirection, sortField, setSortField, queryString, setQueryString}) {
     const preventRefresh = (e) =>{
@@ -13,27 +21,28 @@ function TodosViewForm({sortDirection, setSortDirection, sortField, setSortField
      return () => clearTimeout(debounce)
     }, [localQueryString, setQueryString]);
 
-  return <form onSubmit={preventRefresh}>
+  return <form className={styles.todosViewForm} onSubmit={preventRefresh}>
             <>
                 <label htmlFor="searchTodos">Search todos:</label>
-                <input id="searchTodos"
+                <SearchInputStyle id="searchTodos"
                 type="text"
                 value={localQueryString}
                 onChange={(e) => setLocalQueryString(e.target.value)}
                 />
-                <button type="button" onClick={() => setLocalQueryString("")}>Clear</button>
+                <button className={styles.clearButton}
+                type="button" onClick={() => setLocalQueryString("")}>Clear</button>
             </>
             <>
                 <label htmlFor="sortBy">Sort by</label>
-                <select id='sortBy' onChange={(e) => setSortField(e.target.value)} value={sortField}>
+                <SelectStyle id='sortBy' onChange={(e) => setSortField(e.target.value)} value={sortField}>
                     <option value="title">Title</option>
                     <option value='createdTime'>Time added</option>
-                </select>
+                </SelectStyle>
                 <label htmlFor='direction'>Direction</label>
-                <select id='direction'onChange={(e) => setSortDirection(e.target.value)} value={sortDirection}>
+                <SelectStyle id='direction'onChange={(e) => setSortDirection(e.target.value)} value={sortDirection}>
                     <option value='asc'>Ascending</option>
                     <option value='desc'>Descending</option>
-                </select>
+                </SelectStyle>
             </>
         </form>;
 };

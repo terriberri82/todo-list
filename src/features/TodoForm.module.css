@@ -1,0 +1,15 @@
+.addButton {
+    background-color: rgb(2, 68, 2);
+    color: white;
+    border: rgb(146, 161, 7) solid .25em;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+.addButton:hover {
+    background-color: rgb(146, 161, 7);
+    border: rgb(2, 68, 2) solid .25em;
+}
+.addButton:disabled {
+  background-color:rgb(146, 161, 7);
+  opacity: .5;
+  cursor: not-allowed;
+}

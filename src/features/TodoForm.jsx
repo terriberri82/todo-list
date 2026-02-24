@@ -1,6 +1,14 @@
 import {useRef} from 'react';
 import { useState } from 'react';
 import TextInputWithLabel from '../shared/TextInputWithLabel';
+import styles from "./TodoForm.module.css";
+import styled from "styled-components";
+
+const AddButton = styled.button`
+&:disabled{
+font-style:italic
+}
+`;
 
 function TodoForm({onAddTodo, isSaving}){
   const [workingTodoTitle, setworkingTodoTitle] = useState("");
@@ -28,9 +36,10 @@ function TodoForm({onAddTodo, isSaving}){
              value={workingTodoTitle} 
              onChange= {(event) => setworkingTodoTitle(event.target.value)}
             />
-            <button disabled={workingTodoTitle ===""} >
+            <AddButton className={styles.addButton}
+             disabled={workingTodoTitle ===""} >
               {isSaving ? 'Saving...' : 'Add Todo'}
-              </button>
+              </AddButton>
         </form>
     )
 }

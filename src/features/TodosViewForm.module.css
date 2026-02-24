@@ -1,0 +1,29 @@
+.clearButton {
+    background-color: rgb(2, 68, 2);
+    color: white;
+    border: rgb(146, 161, 7) solid .25em;
+
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+.clearButton:hover {
+    background-color: rgb(146, 161, 7);
+    border: rgb(2, 68, 2) solid .25em;
+}
+
+.todosViewForm {
+   display: grid;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+   
+
+}
+
+.todosViewForm label[for="sortBy"] {
+  flex-basis: 100%;
+}
+
+.todosViewForm #sortBy,
+.todosViewForm label[for="direction"],
+.todosViewForm #direction {
+  flex: 0 0 auto;
+}

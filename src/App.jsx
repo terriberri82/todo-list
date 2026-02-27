@@ -19,7 +19,7 @@ function App() {
   const [sortDirection, setSortDirection] = useState("desc");
   const [queryString, setQueryString] = useState("");
 
-   //State no londer defined now in reducer
+   //State now in reducer
    //const [todoList, setTodoList]= useState([]);
   //const [isLoading, setIsLoading] = useState(false);
   //const [errorMessage , setErrorMessage] = useState("");

@@ -1,6 +1,3 @@
-h1 {
-  text-align: center;
-}
 
 .active {
   color: #888888;
@@ -10,10 +7,21 @@ h1 {
   color: #000000;
 }
 
-nav {
-  display: flex;
-  gap: 1rem;
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
+.header {
+  position: relative;   
+  padding: 16px 20px;
+}
+
+.title {
+  text-align: center;   
+  margin: 0;
+}
+
+.nav {
+  position: absolute;  
+  top: 16px;
+  left: 600px;
+
+  display: flex;      
+  gap: 12px;
 }

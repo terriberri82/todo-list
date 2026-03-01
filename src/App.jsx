@@ -8,7 +8,7 @@ import TodosViewForm from './features/TodosViewForm.jsx';
 import styles from "./App.module.css";
 import TodosPage from './pages/TodosPage.jsx';
 import Header from './shared/Header.jsx'
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import About from './pages/About.jsx';
 import NotFound from './pages/NotFound.jsx';
 
@@ -22,6 +22,7 @@ function App() {
   const [sortField, setSortField] = useState("createdTime");
   const [sortDirection, setSortDirection] = useState("desc");
   const [queryString, setQueryString] = useState("");
+  const location =useLocation()
 
    //State now in reducer
    //const [todoList, setTodoList]= useState([]);
@@ -206,6 +207,16 @@ const encodeUrl = useCallback(()=>{
 
   fetchTodos();
 }, [encodeUrl, token]);
+
+useEffect(() => {
+    if (location.pathname === "/") {
+      document.title = "Todo List";
+    } else if (location.pathname === "/about") {
+      document.title = "About";
+    } else {
+      document.title = "Not Found";
+    }
+  }, [location]);
   
     //return  JSX//
     return (

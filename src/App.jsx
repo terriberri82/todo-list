@@ -6,7 +6,11 @@ import TodoList from './features/TodoList/TodoList.jsx';
 import TodoForm from './features/TodoForm.jsx';
 import TodosViewForm from './features/TodosViewForm.jsx';
 import styles from "./App.module.css";
-
+import TodosPage from './pages/TodosPage.jsx';
+import Header from './shared/Header.jsx'
+import { Routes, Route, useLocation } from 'react-router-dom';
+import About from './pages/About.jsx';
+import NotFound from './pages/NotFound.jsx';
 
  const url = `https://api.airtable.com/v0/${import.meta.env.VITE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}`;
  
@@ -18,6 +22,7 @@ function App() {
   const [sortField, setSortField] = useState("createdTime");
   const [sortDirection, setSortDirection] = useState("desc");
   const [queryString, setQueryString] = useState("");
+  const location =useLocation()
 
    //State now in reducer
    //const [todoList, setTodoList]= useState([]);
@@ -202,29 +207,41 @@ const encodeUrl = useCallback(()=>{
 
   fetchTodos();
 }, [encodeUrl, token]);
+
+useEffect(() => {
+    if (location.pathname === "/") {
+      document.title = "Todo List";
+    } else if (location.pathname === "/about") {
+      document.title = "About";
+    } else {
+      document.title = "Not Found";
+    }
+  }, [location]);
   
     //return  JSX//
     return (
     <div className={styles.appContainer}>
-      <h1>My Todos</h1>
-      <TodoForm onAddTodo={addTodo} isSaving={todoState.isSaving}/>
-      
-      <TodoList todoList={todoState.todoList} onCompleteTodo={completeTodo}
-        onUpdateTodo={updateTodo}  isLoading={todoState.isLoading}
-      />
-      <hr />
-      <TodosViewForm  
-        sortDirection={sortDirection} setSortDirection={setSortDirection}
-        sortField={sortField} setSortField={setSortField} 
-        queryString={queryString} setQueryString={setQueryString} 
-      />
-      {todoState.errorMessage !== "" &&
-        <>
-         <hr/>
-         <p className={styles.errorMessage}>{todoState.errorMessage}</p>
-         <button onClick={() => dispatch({ type: actions.clearError })}>Dismiss</button>
-        </>
-        }
+      <Header title="My Todos" /> 
+      <Routes>
+        <Route path="/" element={
+          <TodosPage 
+            onAddTodo={addTodo}
+            isSaving={todoState.isSaving}
+            todoList={todoState.todoList}
+            onCompleteTodo={completeTodo}
+            onUpdateTodo={updateTodo}
+            isLoading={todoState.isLoading}
+            errorMessage={todoState.errorMessage}
+            sortDirection={sortDirection} setSortDirection={setSortDirection}
+            sortField={sortField} setSortField={setSortField}
+            queryString={queryString} setQueryString={setQueryString}
+            dispatch={dispatch}
+            actions={actions}
+            />
+        }/>
+       <Route path="/about" element={<About/>} />
+       <Route path="/*" element={<NotFound/>} />
+      </Routes>
     </div>
   )
 }

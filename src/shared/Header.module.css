@@ -1,0 +1,19 @@
+h1 {
+  text-align: center;
+}
+
+.active {
+  color: #888888;
+}
+
+.inactive {
+  color: #000000;
+}
+
+nav {
+  display: flex;
+  gap: 1rem;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
